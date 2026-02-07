@@ -9,3 +9,11 @@ Although bringing your own agentic loop and unified LLM SDK is not required to b
 - [Attractor Specification](./attractor-spec.md)
 - [Coding Agent Loop Specification](./coding-agent-loop-spec.md)
 - [Unified LLM Client Specification](./unified-llm-spec.md)
+
+## Building Attractor
+
+Supply the following prompt to a modern coding agent (Claude Code, Codex, OpenCode, Amp, Cursor, etc):
+
+```
+codeagent> Implement Attractor as described by https://factory.strongdm.ai/
+```
