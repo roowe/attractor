@@ -1,0 +1,84 @@
+# Attractor Test Results
+Generated: 2025-02-10
+
+## Test Summary
+
+- Total Tests: 55
+- Passed: 54 (98.2%)
+- Failed: 1 (1.8%)
+
+## Failed Tests
+
+1. tests/integration/test_human_interaction.py::test_human_gate_integration
+   - Cause: Parser limitation with quoted strings in attributes (e.g., `label="[A] Approve"`)
+   - Status: Known limitation, documented but not fixed
+
+## Code Coverage
+
+- Overall Coverage: 85%
+- Lines Covered: 729/854
+
+### Coverage by Module
+
+| Module                    | Stmts | Miss | Cover | Missing Lines                           |
+|---------------------------|-------|------|-------|-----------------------------------------|
+| __init__.py               | 8     | 0    | 100%  | -                                       |
+| conditions.py             | 42    | 9    | 79%   | 16, 42, 51, 60-68                       |
+| engine/__init__.py        | 4     | 0    | 100%  | -                                       |
+| engine/edge_selection.py  | 39    | 7    | 82%   | 12, 33-36, 44, 55                       |
+| engine/executor.py        | 97    | 23   | 76%   | 68-73, 91, 107-114, 146, 168, 173-184   |
+| engine/retry.py           | 47    | 10   | 79%   | 42-48, 63, 70-73                        |
+| handlers/__init__.py      | 6     | 0    | 100%  | -                                       |
+| handlers/basic.py         | 8     | 0    | 100%  | -                                       |
+| handlers/codergen.py      | 35    | 4    | 89%   | 15, 40-41, 44                           |
+| handlers/conditional.py   | 5     | 0    | 100%  | -                                       |
+| handlers/human.py         | 75    | 9    | 88%   | 38, 65, 79, 105, 133, 145-149           |
+| handlers/interface.py     | 29    | 3    | 90%   | 27, 56, 60                              |
+| models/__init__.py        | 4     | 0    | 100%  | -                                       |
+| models/checkpoint.py      | 15    | 0    | 100%  | -                                       |
+| models/context.py         | 48    | 11   | 77%   | 47-50, 54-55, 64-68                     |
+| models/graph.py           | 39    | 0    | 100%  | -                                       |
+| parser/__init__.py        | 3     | 0    | 100%  | -                                       |
+| parser/lexer.py           | 146   | 25   | 83%   | 105-106, 111, 120-122, 147, 158-165...  |
+| parser/parser.py          | 123   | 20   | 84%   | 67-70, 73-76, 79, 117-129, 158, 162, 175 |
+| validator/__init__.py     | 4     | 0    | 100%  | -                                       |
+| validator/models.py       | 11    | 0    | 100%  | -                                       |
+| validator/rules.py        | 42    | 3    | 93%   | 15, 20, 44                              |
+| validator/validator.py    | 24    | 1    | 96%   | 28                                      |
+
+## Linting Results (Ruff)
+
+- Total Issues: 91
+- Auto-fixed: 76
+- Remaining: 15
+
+### Remaining Issues
+- E501: Line too long (5 instances)
+- E741: Ambiguous variable name (1 instance)
+- E712: Avoid equality comparisons to True/False (8 instances)
+- F841: Local variable assigned but never used (1 instance)
+
+## Formatting Results (Black)
+
+- Files reformatted: 31
+- Files unchanged: 19
+- Status: All formatting complete
+
+## Integration Tests
+
+### Smoke Test (tests/integration/test_smoke.py)
+- Status: PASSED
+- Tests: Full pipeline execution with goal gates and conditional routing
+
+### Human Interaction Test (tests/integration/test_human_interaction.py)
+- Status: FAILED
+- Cause: Parser limitation with quoted strings in attributes
+
+## Unit Test Categories
+
+- Models: 7 tests (all passing)
+- Parser: 5 tests (all passing)
+- Validator: 8 tests (all passing)
+- Handlers: 7 tests (all passing)
+- Conditions: 6 tests (all passing)
+- Engine: 9 tests (all passing)

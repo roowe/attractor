@@ -1,0 +1,11 @@
+# examples/pipelines/hello.dot
+digraph Hello {
+    graph [goal="Say hello to the world"]
+    rankdir=LR
+
+    start [shape=Mdiamond, label="Start"]
+    hello [shape=box, label="Generate Hello", prompt="Write a hello world message"]
+    exit [shape=Msquare, label="Exit"]
+
+    start -> hello -> exit
+}
