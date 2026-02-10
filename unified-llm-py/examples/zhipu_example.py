@@ -51,6 +51,7 @@ async def main():
 
     print("回复: ", end="", flush=True)
     async for event in client.stream(request):
+        #print(event)
         if event.type == StreamEventType.TEXT_DELTA:
             print(event.delta, end="", flush=True)
     print("\n")
@@ -86,7 +87,7 @@ async def main_anthropic_format():
 
     zhipu_adapter = AnthropicAdapter(
         api_key=os.environ.get("ZHIPU_API_KEY", "your-zhipu-api-key"),
-        base_url="https://open.bigmodel.cn/api/anthropic",
+        base_url="https://open.bigmodel.cn/api/anthropic/v1",
     )
 
     client = Client(providers={"zhipu": zhipu_adapter}, default_provider="zhipu")
@@ -191,10 +192,10 @@ if __name__ == "__main__":
     # 运行示例 - 选择你想尝试的方式:
 
     # 方式 1: OpenAI Chat Completions 格式 (推荐)
-    #asyncio.run(main())
+    asyncio.run(main())
 
     # 方式 2: Anthropic Messages API 格式
-    asyncio.run(main_anthropic_format())
+    #asyncio.run(main_anthropic_format())
 
     # 方式 3: 尝试不同模型
     # asyncio.run(main_with_custom_model())

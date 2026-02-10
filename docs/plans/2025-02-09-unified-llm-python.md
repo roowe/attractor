@@ -28,119 +28,31 @@
 - Create: `.gitignore` (Git ignore patterns)
 - Create: `README.md` (Project documentation)
 
-**Step 1: Create pyproject.toml**
+**Step 1: Initialize project with uv**
 
-```toml
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+```bash
+# Create library project with src layout
+uv init --lib unified-llm
 
-[project]
-name = "unified-llm"
-version = "0.1.0"
-description = "Unified LLM client for OpenAI, Anthropic, and Gemini"
-requires-python = ">=3.11"
-dependencies = [
-    "httpx>=0.27.0",
-    "pydantic>=2.0.0",
-    "pydantic-core>=2.0.0",
-    "anyio>=4.0.0",
-    "typing-extensions>=4.0.0",
-]
+# Add core dependencies
+uv add httpx pydantic anyio
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0.0",
-    "pytest-asyncio>=0.21.0",
-    "pytest-cov>=4.0.0",
-    "black>=23.0.0",
-    "ruff>=0.1.0",
-    "mypy>=1.0.0",
-]
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/unified_llm"]
-
-[tool.pytest.ini_options]
-asyncio_mode = "auto"
-testpaths = ["tests"]
-
-[tool.black]
-line-length = 100
-target-version = ["py311"]
-
-[tool.ruff]
-line-length = 100
-select = ["E", "F", "I", "W"]
+# Add development dependencies
+uv add --dev pytest pytest-asyncio pytest-cov ruff mypy
 ```
 
-**Step 2: Create .gitignore**
-
-```
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual environments
-venv/
-env/
-ENV/
-.venv
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-*.cover
-
-# IDEs
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Environment
-.env
-.env.local
-
-# MyPy
-.mypy_cache/
-```
-
-**Step 3: Create .env.example**
+**Step 2: Create .env.example**
 
 ```
 # OpenAI
 OPENAI_API_KEY=sk-...
 OPENAI_BASE_URL=https://api.openai.com/v1
-OPENAI_ORG_ID=
-OPENAI_PROJECT_ID=
 
 # Anthropic
 ANTHROPIC_API_KEY=sk-ant-...
-ANTHROPIC_BASE_URL=
 
 # Gemini
 GEMINI_API_KEY=...
-GEMINI_BASE_URL=
 ```
 
 **Step 4: Create README.md**
